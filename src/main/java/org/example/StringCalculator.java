@@ -8,7 +8,7 @@ public class StringCalculator
     {
         int delimiterIndex=inputSequence.indexOf("//");
         int delimiterEndIndex=inputSequence.indexOf("\n");
-        return "["+inputSequence.substring(delimiterIndex+2,delimiterEndIndex)+",\\n]"; // Provides the regex for splitting
+        return "["+inputSequence.substring(delimiterIndex+2,delimiterEndIndex)+",\n]"; // Provides the regex for splitting
     }
 
     // Extract numbers from the input string
@@ -41,7 +41,10 @@ public class StringCalculator
         // Handling multiple numbers input
         for(String number : numbers)
         {
-            sum+=Integer.parseInt(number);
+            int num=Integer.parseInt(number);
+            if(num<0)
+                throw new IllegalArgumentException("Negatives Not Allowed" +num);
+            sum+=num;
         }
         return sum;
     }

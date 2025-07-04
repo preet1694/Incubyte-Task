@@ -61,6 +61,6 @@ public class StringCalculatorTest
     @Test
     public void checkForNegativeNumberInputTest()
     {
-        assertThrows(Exception.class, ()->calculator.add("-1"));
+        assertThrows(IllegalArgumentException.class, ()->calculator.add("-1"));
     }
 }

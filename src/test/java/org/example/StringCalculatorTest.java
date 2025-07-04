@@ -20,4 +20,10 @@ public class StringCalculatorTest
     {
         assertEquals(0, calculator.add(""));
     }
+
+    @Test
+    public void checkForOneOrTwoArgumentsTest()
+    {
+        assertEquals(1, calculator.add("1"));
+    }
 }

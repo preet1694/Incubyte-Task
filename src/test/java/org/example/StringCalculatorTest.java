@@ -33,4 +33,11 @@ public class StringCalculatorTest
     {
         assertEquals(5, calculator.add("2,3"));
     }
+
+    @Test
+    public void checkForMultipleArgumentsTest()
+    {
+        assertEquals(9, calculator.add("2,3,4"));
+        assertEquals(10, calculator.add("1,2,3,4"));
+    }
 }

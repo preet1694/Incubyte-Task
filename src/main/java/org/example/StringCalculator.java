@@ -1,6 +1,8 @@
 package org.example;
 
 
+import java.util.ArrayList;
+
 public class StringCalculator
 {
     // Extracts delimiters from the input string
@@ -21,6 +23,8 @@ public class StringCalculator
     {
         int sum=0;
         String delimiters="[,\\n]";
+        ArrayList<Integer> negativeNumbers=new ArrayList<>();
+
         // Handling empty input string
         if (inputSequence == null || inputSequence.isEmpty())
         {
@@ -43,8 +47,13 @@ public class StringCalculator
         {
             int num=Integer.parseInt(number);
             if(num<0)
-                throw new IllegalArgumentException("Negatives Not Allowed " +num);
-            sum+=num;
+                negativeNumbers.add(num);
+            else
+            {sum+=num;}
+        }
+        if(!negativeNumbers.isEmpty())
+        {
+            throw new IllegalArgumentException("Negatives not allowed "+ negativeNumbers);
         }
         return sum;
     }

@@ -61,13 +61,14 @@ public class StringCalculatorTest
     @Test
     public void checkForNegativeNumberInputTest()
     {
-        assertThrows(IllegalArgumentException.class, ()->calculator.add("-1"));
+        IllegalArgumentException exception=assertThrows(IllegalArgumentException.class, ()->calculator.add("-1"));
+        assertEquals("Negatives not allowed [-1]", exception.getMessage());
     }
 
     @Test
     public void checkForMultipleNegativeNumberInputTest()
     {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->calculator.add("-1,-2"));
-        assertEquals("Negatives Not Allowed -1 -2", exception.getMessage());
+        assertEquals("Negatives not allowed [-1, -2]", exception.getMessage());
     }
 }

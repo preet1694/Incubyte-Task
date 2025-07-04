@@ -22,9 +22,15 @@ public class StringCalculatorTest
     }
 
     @Test
-    public void checkForOneOrTwoArgumentsTest()
+    public void checkForOneArgumentsTest()
     {
         assertEquals(1, calculator.add("1"));
         assertEquals(18, calculator.add("18"));
+    }
+
+    @Test
+    public void checkForTwoArgumentsTest()
+    {
+        assertEquals(5, calculator.add("2,3"));
     }
 }

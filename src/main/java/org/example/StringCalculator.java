@@ -1,21 +1,27 @@
 package org.example;
 
-import java.util.StringTokenizer;
 
 public class StringCalculator
 {
     public int add(String inputSequence)
     {
+        int sum=0;
+
+        // Handling empty input string
         if (inputSequence == null || inputSequence.isEmpty())
         {
             return 0;
         }
 
+        // Splitting input string into numbers
         String[]  args = inputSequence.split(",");
 
-        if(args.length==1)
-            return Integer.parseInt(args[0]);
+        // Handling multiple numbers input
+        for(String arg : args)
+        {
+            sum+=Integer.parseInt(arg);
+        }
 
-        return Integer.parseInt(args[0])+Integer.parseInt(args[1]);
+        return sum;
     }
 }

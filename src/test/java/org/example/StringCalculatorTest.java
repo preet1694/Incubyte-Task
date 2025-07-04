@@ -35,8 +35,11 @@ public class StringCalculatorTest
     }
 
     @Test
-    public void checkForMultipleArgumentsTest()
+    public void checkForUnknownArgumentsTest()
     {
+        assertEquals(0, calculator.add(""));
+        assertEquals(2, calculator.add("2"));
+        assertEquals(3, calculator.add("1,2"));
         assertEquals(9, calculator.add("2,3,4"));
         assertEquals(10, calculator.add("1,2,3,4"));
     }

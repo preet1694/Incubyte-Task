@@ -43,7 +43,7 @@ public class StringCalculator
         {
             int num=Integer.parseInt(number);
             if(num<0)
-                throw new IllegalArgumentException("Negatives Not Allowed" +num);
+                throw new IllegalArgumentException("Negatives Not Allowed " +num);
             sum+=num;
         }
         return sum;

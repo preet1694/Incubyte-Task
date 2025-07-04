@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class StringCalculatorTest
 {
@@ -55,5 +56,11 @@ public class StringCalculatorTest
     public void checkForUserDefinedDelimitersInputTest()
     {
         assertEquals(3, calculator.add("//;\n1;2"));
+    }
+
+    @Test
+    public void checkForNegativeNumberInputTest()
+    {
+        assertThrows(Exception.class, ()->calculator.add("-1"));
     }
 }

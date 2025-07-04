@@ -1,6 +1,5 @@
 package org.example;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,8 +52,8 @@ public class StringCalculatorTest
     }
 
     @Test
-    public void checkForMultipleDelimitersInputTest()
+    public void checkForUserDefinedDelimitersInputTest()
     {
-        assertEquals(3, calculator.add("//;\\n1;2"));
+        assertEquals(3, calculator.add("//;\n1;2"));
     }
 }

@@ -25,5 +25,6 @@ public class StringCalculatorTest
     public void checkForOneOrTwoArgumentsTest()
     {
         assertEquals(1, calculator.add("1"));
+        assertEquals(18, calculator.add("18"));
     }
 }

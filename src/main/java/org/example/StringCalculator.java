@@ -21,26 +21,24 @@ public class StringCalculator
 
         String delimitersString = inputSequence.substring(delimiterIndex+2,delimiterEndIndex);
 
-        // If multiple length delimiter is encountered
-        if(delimitersString.startsWith("[")&&delimitersString.endsWith("]"))
+        // If delimiter in [] is encountered
+        if (delimitersString.startsWith("[") && delimitersString.endsWith("]"))
         {
-            if(delimitersString.charAt(2)==']')
-            {
-                StringBuilder delimiters= new StringBuilder();
-                for(int i=0;i<delimitersString.length();i++)
-                {
-                    if(delimitersString.charAt(i)=='[')
-                    {
-                        delimiters.append(escapeRegex((String.valueOf(delimitersString.charAt(i + 1))))).append("|");
-                        i++;
-                    }
-                }
+            delimitersString = delimitersString.substring(1, delimitersString.length() - 1);
 
-                return delimiters+",|\\n";
+            String[] delimiters = delimitersString.split("]\\[");
+            StringBuilder result = new StringBuilder(",|\\n");
+
+            for (String delimiter : delimiters) {
+                String escaped = escapeRegex(delimiter);
+                result.append("|").append(escaped);
             }
-            return ",|\\n|"+escapeRegex(delimitersString.substring(1,delimitersString.length()-1));
+            return result.toString();
         }
-        return "["+delimitersString+",\n]"; // Provides the regex for splitting
+        else
+        {
+            return ",|\\n|" + escapeRegex(delimitersString);
+        }
     }
 
     // Processing multiple length delimiters

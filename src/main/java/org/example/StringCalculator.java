@@ -18,7 +18,18 @@ public class StringCalculator
     {
         int delimiterIndex=inputSequence.indexOf("//");
         int delimiterEndIndex=inputSequence.indexOf("\n");
-        return "["+inputSequence.substring(delimiterIndex+2,delimiterEndIndex)+",\n]"; // Provides the regex for splitting
+
+        String delimiters = inputSequence.substring(delimiterIndex+2,delimiterEndIndex);
+
+        // If multiple length delimiter is encountered
+        if(delimiters.startsWith("[")&&delimiters.endsWith("]"))
+            return ",|\\n|"+escapeRegex(delimiters.substring(1,delimiters.length()-1));
+        return "["+delimiters+",\n]"; // Provides the regex for splitting
+    }
+
+    // Processing multiple length delimiters
+    private String escapeRegex(String delimiter) {
+        return delimiter.replaceAll("([\\\\*+\\[^$?.|])", "\\\\$1");
     }
 
     // Extract numbers from the input string

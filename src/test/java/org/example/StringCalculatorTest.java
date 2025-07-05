@@ -103,6 +103,12 @@ public class StringCalculatorTest
         assertEquals(10,calculator.add("//[*][%]\n1*2%3\n4"));
     }
 
+    @Test
+    public void checkMultipleDelimitersHavingMultipleLengthCharactersTest()
+    {
+        assertEquals(6,calculator.add("//[**][%%]\n1**2%%3"));
+    }
+
     @After
     public void tearDownTest()
     {

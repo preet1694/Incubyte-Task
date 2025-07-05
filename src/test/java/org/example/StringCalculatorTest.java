@@ -83,6 +83,13 @@ public class StringCalculatorTest
         assertEquals(3, calculator.getCalledCount());
     }
 
+    @Test
+    public void checkNumbersGreaterThanThousandTest()
+    {
+        assertEquals(1, calculator.add("1,1002,1003"));
+        assertEquals(3, calculator.add("1,2,1003"));
+    }
+
     @After
     public void tearDownTest()
     {

@@ -19,12 +19,28 @@ public class StringCalculator
         int delimiterIndex=inputSequence.indexOf("//");
         int delimiterEndIndex=inputSequence.indexOf("\n");
 
-        String delimiters = inputSequence.substring(delimiterIndex+2,delimiterEndIndex);
+        String delimitersString = inputSequence.substring(delimiterIndex+2,delimiterEndIndex);
 
         // If multiple length delimiter is encountered
-        if(delimiters.startsWith("[")&&delimiters.endsWith("]"))
-            return ",|\\n|"+escapeRegex(delimiters.substring(1,delimiters.length()-1));
-        return "["+delimiters+",\n]"; // Provides the regex for splitting
+        if(delimitersString.startsWith("[")&&delimitersString.endsWith("]"))
+        {
+            if(delimitersString.charAt(2)==']')
+            {
+                StringBuilder delimiters= new StringBuilder();
+                for(int i=0;i<delimitersString.length();i++)
+                {
+                    if(delimitersString.charAt(i)=='[')
+                    {
+                        delimiters.append(escapeRegex((String.valueOf(delimitersString.charAt(i + 1))))).append("|");
+                        i++;
+                    }
+                }
+
+                return delimiters+",|\\n";
+            }
+            return ",|\\n|"+escapeRegex(delimitersString.substring(1,delimitersString.length()-1));
+        }
+        return "["+delimitersString+",\n]"; // Provides the regex for splitting
     }
 
     // Processing multiple length delimiters
@@ -35,6 +51,7 @@ public class StringCalculator
     // Extract numbers from the input string
     private String extractNumberPart(String input) {
         int delimiterEndIndex = input.indexOf("\n");
+
         return input.substring(delimiterEndIndex + 1);  // Extract the string after \n
     }
 

@@ -99,8 +99,8 @@ public class StringCalculatorTest
     @Test
     public void checkMultipleDelimitersHavingSingleLengthCharacterTest()
     {
-        assertEquals(6, calculator.add("//[*][%]\\n1*2%3"));
-        assertEquals(10,calculator.add("//[*][%]\\n1*2%3\n4"));
+        assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
+        assertEquals(10,calculator.add("//[*][%]\n1*2%3\n4"));
     }
 
     @After

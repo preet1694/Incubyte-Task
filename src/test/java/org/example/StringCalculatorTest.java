@@ -90,6 +90,12 @@ public class StringCalculatorTest
         assertEquals(3, calculator.add("1,2,1003"));
     }
 
+    @Test
+    public void checkDelimiterForMultipleLengthsTest()
+    {
+        assertEquals(6,calculator.add("//[***]\\n1***2***3"));
+    }
+
     @After
     public void tearDownTest()
     {

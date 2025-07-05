@@ -71,4 +71,11 @@ public class StringCalculatorTest
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->calculator.add("-1,-2"));
         assertEquals("Negatives not allowed [-1, -2]", exception.getMessage());
     }
+
+    @Test
+    public void checkCallCountTest()
+    {
+        assertEquals(1, calculator.add("1"));
+        assertEquals(1, calculator.getCalledCount());
+    }
 }

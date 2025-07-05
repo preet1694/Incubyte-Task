@@ -55,6 +55,8 @@ public class StringCalculator
         for(String number : numbers)
         {
             int num=Integer.parseInt(number);
+            if(num>1000)
+                continue;
             if(num<0)
                 negativeNumbers.add(num);
             else

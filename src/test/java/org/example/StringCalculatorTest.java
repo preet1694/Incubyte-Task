@@ -1,9 +1,11 @@
 package org.example;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThrows;
 
 public class StringCalculatorTest
@@ -76,6 +78,14 @@ public class StringCalculatorTest
     public void checkCallCountTest()
     {
         assertEquals(1, calculator.add("1"));
-        assertEquals(1, calculator.getCalledCount());
+        assertThrows(IllegalArgumentException.class,()-> calculator.add("-1"));
+        assertNotEquals(2, calculator.add("1\n2"));
+        assertEquals(3, calculator.getCalledCount());
+    }
+
+    @After
+    public void tearDownTest()
+    {
+        calculator = null;
     }
 }

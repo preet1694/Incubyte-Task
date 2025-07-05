@@ -5,6 +5,14 @@ import java.util.ArrayList;
 
 public class StringCalculator
 {
+
+    private int calledCount = 0;
+
+
+    public int getCalledCount() {
+        return calledCount;
+    }
+
     // Extracts delimiters from the input string
     private String extractDelimiters(String inputSequence)
     {
@@ -21,6 +29,7 @@ public class StringCalculator
 
     public int add(String inputSequence)
     {
+        calledCount++;
         int sum=0;
         String delimiters="[,\\n]";
         ArrayList<Integer> negativeNumbers=new ArrayList<>();
